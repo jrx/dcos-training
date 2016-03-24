@@ -28,21 +28,21 @@ $ pwd
 /home/vagrant/dcos
 $ git clone https://github.com/jrx/dcos-training.git
 Cloning into 'dcos-training'...
-remote: Counting objects: 10, done.
-remote: Compressing objects: 100% (10/10), done.
-remote: Total 10 (delta 3), reused 0 (delta 0), pack-reused 0
-Unpacking objects: 100% (10/10), done.
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
 Checking connectivity... done.
-$ ls -la
-total 32
-drwxrwxr-x 6 vagrant vagrant 4096 Dec  6 19:06 .
-drwxr-xr-x 6 vagrant vagrant 4096 Dec  6 19:01 ..
-drwxrwxr-x 2 vagrant vagrant 4096 Dec  6 19:02 bin
--rw-rw-r-- 1 vagrant vagrant 3654 Dec  6 19:02 install.sh
-drwxrwxr-x 3 vagrant vagrant 4096 Dec  6 19:02 lib
-drwxrwxr-x 2 vagrant vagrant 4096 Dec  6 19:02 local
-drwxrwxr-x 3 vagrant vagrant 4096 Dec  6 19:06 dcos-training
--rw-rw-r-- 1 vagrant vagrant   60 Dec  6 19:02 pip-selfcheck.json
+$ ll
+total 36
+drwxrwxr-x 6 vagrant vagrant 4096 Mar 24 10:43 ./
+drwxr-xr-x 6 vagrant vagrant 4096 Mar 24 10:25 ../
+drwxrwxr-x 2 vagrant vagrant 4096 Mar 24 10:25 bin/
+drwxrwxr-x 3 vagrant vagrant 4096 Mar 24 10:43 dcos-training/
+-rw-rw-r-- 1 vagrant vagrant 5250 Mar 24 10:24 install.sh
+drwxrwxr-x 3 vagrant vagrant 4096 Mar 24 10:25 lib/
+drwxrwxr-x 2 vagrant vagrant 4096 Mar 24 10:25 local/
+-rw-rw-r-- 1 vagrant vagrant   60 Mar 24 10:25 pip-selfcheck.json
 ```
 
 Going forward, we will call the directory you've installed the DCOS CLI in simply  `$DCOS_CLI_HOME`.
