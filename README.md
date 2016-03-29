@@ -6,7 +6,18 @@ You need a computer with Vagrant (https://www.vagrantup.com) and VirtualBox (htt
 
 ## Contents
 
-Initiate the vagrant environment `vagrant init ubuntu/wily64` start the box `vagrant up` and connect to it with `vagrant ssh`.
+Initiate the vagrant environment `vagrant init ubuntu/wily64`. Increase the Memory for the vagrant box by adding the following lines to `Vagrantfile`:
+```
+config.vm.provider "virtualbox" do |vb|
+  # Display the VirtualBox GUI when booting the machine
+  vb.gui = false
+
+  # Customize the amount of memory on the VM:
+  vb.memory = "1024"
+end
+```
+
+Start the box `vagrant up` and connect to it with `vagrant ssh`.
 
 First of all we install the DCOS CLI: https://docs.mesosphere.com/administration/cli/install-cli/#linux
 
