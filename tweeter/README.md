@@ -14,7 +14,7 @@ Capabilities:
 ## Placeholders
 - $DCOS_CLI_HOME: DCOS command line tool directory
 - $MASTER_IP_ADDRESS: Mesos Master IP address
-- $PUBLIC_IP_ADDRESS: Public slave IP of the EC2 Host
+- $PUBLIC_SLAVE_IP_ADDRESS: Mesos Public Slave IP address
 
 ## Configure the Vagrant Instance
 
@@ -76,7 +76,7 @@ $ dcos marathon app list
 
 The app talks to Cassandra via `cassandra-dcos-node.cassandra.dcos.mesos`, and Kafka via `broker-0.kafka.mesos:1025`. If your cluster uses different names for Cassandra or Kafka, edit marathon.json first.
 
-Traffic is routed to the app via marathon-lb. Navigate to `http://$PUBLIC_IP_ADDRESS:10000` to see the Tweeter UI and post a Tweet.
+Traffic is routed to the app via marathon-lb. Navigate to `http://$PUBLIC_SLAVE_IP_ADDRESS:10000` to see the Tweeter UI and post a Tweet.
 
 ## Post a lot of Tweets
 
@@ -84,7 +84,7 @@ Post a lot of Shakespeare tweets from a file:
 
 ```
 $ cd /home/vagrant/dcos/oinker
-$ ./bin/rake shakespeare:tweet ./shakespeare-data.json http://$PUBLIC_IP_ADDRESS:10000
+$ ./bin/rake shakespeare:tweet ./shakespeare-data.json http://$PUBLIC_SLAVE_IP_ADDRESS:10000
 ```
 
 This will post more than 100k tweets one by one, so you'll see them coming in steadily when you refresh the page.
@@ -101,7 +101,7 @@ $ dcos package install --yes zeppelin
 
 Add the role slave_public to the Zeppelin marathon app so that marathon launches it on the public slave.
 
-Navigate to Zeppelin at `http://$PUBLIC_IP_ADDRESS:<marathon port>` and load the Spark Notebook from `spark-notebook.json`. Zeppelin is preconfigured to execute Spark jobs on the DCOS cluster, so there is no further configuration or setup required.
+Navigate to Zeppelin at `http://$PUBLIC_SLAVE_IP_ADDRESS:<marathon port>` and load the Spark Notebook from `spark-notebook.json`. Zeppelin is preconfigured to execute Spark jobs on the DCOS cluster, so there is no further configuration or setup required.
 
 Run the Load Dependencies step to load the required libraries into Zeppelin. Next, run the Spark Streaming step, which reads the tweet stream from Zookeeper, and puts them into a temporary table that can be queried using SparkSQL. Next, run the Top Tweeters SQL query, which counts the number of tweets per user, using the table created in the previous step. The table updates continuously as new tweets come in, so re-running the query will produce a different result every time.
 
