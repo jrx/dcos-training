@@ -6,7 +6,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "mhausenblas/cicd-demo",
+      "image": "janr/cicd-demo:ed60f0be3874a53c1e9288a1b01f6e5832404afc",
       "network": "BRIDGE",
       "portMappings": [
         {

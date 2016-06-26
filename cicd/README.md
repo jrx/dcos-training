@@ -11,7 +11,7 @@ In order to carry out the hands-on, at least one member in the team will need:
 ## Preparation
 ### Installing  Jenkins
 
-We're going to install an instance of Jenkins onto DC/OS. The Jenkins package for DC/OS is available in the [Mesosphere Universe](https://github.com/mesosphere/universe). 
+We're going to install an instance of Jenkins onto DC/OS. The Jenkins package for DC/OS is available in the [Mesosphere Universe](https://github.com/mesosphere/universe).
 
 Install Jenkins using the DC/OS CLI:
 ```
@@ -34,10 +34,14 @@ Begin by creating a new public GitHub repository, e.g. [mhausenblas/cicd-demo](h
 
 ### a) Creating a Jekyll site from scratch
 
+In order to build Jekyll you need Ruby to be installed. On Ubuntu do the following:
+
+    $ sudo apt-get install ruby ruby-dev
+
 Follow [the instructions provided by GitHub](http://www.stephaniehicks.com/githubPages_tutorial/pages/githubpages-jekyll.html) to create a basic site outline:
 
-    $ gem install bundler
-    $ gem install jekyll
+    $ sudo gem install bundler
+    $ sudo gem install jekyll
     $ jekyll new site
 
 Now add these files to your repository:
@@ -152,7 +156,7 @@ Now we need to bind our username and password to environment variables.
 
 ![Add creds to build](img/add-creds-to-build.png)
 
-Next, add three `Execute shell` build steps to login, build and push the image respectively. We will tag the Docker image with the Git commit SHA (Step 2). 
+Next, add three `Execute shell` build steps to login, build and push the image respectively. We will tag the Docker image with the Git commit SHA (Step 2).
 
 Step 1:
 
@@ -190,4 +194,3 @@ The Marathon app spec we used deploys Jekyll to the public node. You can check t
 To access Jekyll, look up the port in Marathon (in my case `29270`) and append to the public node FQDN or IP:
 
 ![Accessing Jekyll](img/accessing-jekyll.png)
- 

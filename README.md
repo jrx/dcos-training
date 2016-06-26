@@ -1,6 +1,6 @@
 # DCOS Training
 
-You need a computer with Vagrant (https://www.vagrantup.com) and VirtualBox (https://www.virtualbox.org) installed. Please download the ubuntu box ahead of the training with the command `vagrant box add ubuntu/wily64`.
+You need a computer with Vagrant (https://www.vagrantup.com) and VirtualBox (https://www.virtualbox.org) installed. Please download the ubuntu box ahead of the training with the command `vagrant box add ubuntu/xenial64`.
 
 # Container management with Docker and Mesos/Marathon
 
