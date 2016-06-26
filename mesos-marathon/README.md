@@ -5,37 +5,34 @@ Keep https://mesosphere.github.io/marathon/docs open in a browser, you'll need i
 - $DCOS_CLI_HOME: DCOS command line tool directory
 - $MASTER_IP_ADDRESS: Mesos Master IP address
 
-## Install Marathon
+## Launching apps via the UI
 
-Since Marathon is installed by default on DCOS this is a NOP.
-
-## Launch apps via the Marathon UI
-
-- Got to DCOS dashboard and click on the Marathon service
-- In the Marathon UI
- - Start simple app such as `while [ true ] ; do echo "Hello DCOS" ; sleep 5 ; done`
+- Got to DC/OS dashboard and click on the Marathon service
+- In the Marathon UI:
+ - Create an app with ID `hw` such as `while [ true ] ; do echo "Hello world!" ; sleep 10 ; done`
  - Scale up and down
- - Make yourself familiar with health checks
+ - Kill tasks
+ - Explore logs
+ - Update the app spec to `while [ true ] ; do echo "Hello DC/OS!" ; sleep 5 ; done` and discuss what happens
 
-## Launch apps via Marathon HTTP API
+ ## Launching apps via the CLI
 
-Note that we will use [HTTPie](http://httpie.org) in the following but you can use `curl` should you wish to do that.
+ Simple app server:
 
-    $ cd $DCOS_CLI_HOME
-    $ http POST http://$MASTER_IP_ADDRESS/service/marathon/v2/apps < dcos-training/mesos-marathon/marathon-hello-world.json
+     $ dcos marathon app add peek.json
+     $ dcos marathon app list
+     $ dcos task
 
-There are more sample app specs here in this directory:
+ Try the other ones:
 
-- `marathon-peek.json` that launches a Docker images that introspects itself
-- `marathon-private-registry.json` that launches a Docker registry
-- `marathon-mattermost.json` that launches an OSS Slack clone (using a MySQL database underneath)
+ - A web server: [nginx.json](nginx.json)
+ - A simple blog: [jekyll.json](jekyll.json)
+ - A Slack-like chat app: [mattermost.json](mattermost.json)
 
-## List apps via Marathon HTTP API
+ For the following you'll need to have [Marathon-lb](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/) installed:
 
-    $ http http://$MASTER_IP_ADDRESS/service/marathon/v2/apps
+ - A Wordpress blog `wordpress.json`
 
-## Use Marathon in DCOS
+ This one uses [VIPs](https://dcos.io/docs/1.7/usage/service-discovery/virtual-ip-addresses/) for service discovery:
 
-    $ cd $DCOS_CLI_HOME
-    $ dcos marathon app add marathon-mattermost.json
-    $ dcos marathon app list
+ - An app server `vipwebserver.json`
