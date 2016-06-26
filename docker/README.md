@@ -11,13 +11,15 @@ There are a few [valuable Docker](http://www.nkode.io/2014/08/24/valuable-docker
 Make sure you have your DCOS cluster per team up and running. Then do:
 
 ```
-# get your team key
+# get your team key and paste it to the following file
+$ vi ~/.ssh/your-team-key
+# set the file permissions
 $ chmod 600 ~/.ssh/your-team-key
 # add key once:
-eval `ssh-agent -s`
-ssh-add ~/.ssh/your-team-key
+$ eval `ssh-agent -s`
+$ ssh-add ~/.ssh/your-team-key
 # log in with forwarding enabled (so that you can log in from master to one of the agents)
-ssh -A core@$MASTER_IP_ADDRESS
+$ ssh -A core@$MASTER_IP_ADDRESS
 ```
 
 We will carry out the following tasks on the Mesos master instance of the DCOS. It is a [CoreOS](https://coreos.com/) environment, so Docker native.
@@ -82,6 +84,7 @@ $ docker pull ubuntu:latest
 ## Update an image
 ```
 $ docker run -i -t ubuntu /bin/bash
+    $ apt-get update
     $ apt-get install -y git
 $ docker ps -a
 $ docker commit -m "added git" -a "janr" 3dac737f418c janr/ubuntu:v2
