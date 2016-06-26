@@ -67,7 +67,8 @@ The hands on sessions are:
 
 1. [Containers &amp; Docker](./docker)
 1. [Mesos &amp; Marathon](./mesos-marathon)
-1. [DCOS Infinity](./tweeter)
+1. [Tweeter](./tweeter)
+1. [CI/CD](./cicd)
 
 ## Resources
 
